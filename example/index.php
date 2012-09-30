@@ -13,14 +13,56 @@
 	<!-- 異なったディレクトリから呼び出す場合 -->
 	<script type="text/javascript" id="js_socialLanp" src="../system.js?http://hirayamaru.info/sociallanp"></script>
 
+
+<style type="text/css">
+
+	body{
+		margin:0;
+	}
+
+	.wrapper{
+		margin-right: auto;
+		margin-left: auto;
+		width:800px;
+		height:100%;
+		text-align: center;
+	}
+	
+	.socialLanp{
+		display: block;
+		width:302px;
+		height:64px;
+		background-image: url("../system/images/button_off.png");
+		
+		color: #fff;
+		font-size: 20px;
+		text-decoration: none;
+		font-weight: bold;
+		line-height: 62px;
+		letter-spacing: .2em;
+		
+		margin-right: auto;
+		margin-left: auto;
+	}
+	
+	.socialLanp:hover{
+		background-image: url("../system/images/button_on.png");		
+	}
+	
+	.addContent{
+		text-align: left;
+	}
+</style>
+
 </head>
 
 
 <body>
 
-	<a class="socialLanp" rel="test" target="_blank">
-		<img src="button_off.png" alt="button_off" width="" height="" />
-	</a>
+<div class="wrapper">
+	<h1>今すぐシェアしてクーポンをゲット！</h1>
+	<a class="socialLanp" rel="test" target="_blank">クーポンを取得</a>
+</div>
 
 </body>
 </html>

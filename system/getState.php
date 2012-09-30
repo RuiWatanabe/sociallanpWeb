@@ -40,6 +40,7 @@
 	//セッション"SharePost"と"nextShareTime"のチェックを行う。
 	//sharePost: すでにシェアした記事のスラッグ名のリスト
 	//nextShareTime: 次にシェアすることのできる時刻
+/*
 	$shareInfo = "null";
 	 if(!isset($_SESSION['sharePost']) || !isset($_SESSION['nextShareTime'])){ 
 		//セッションがカラだった場合、セッション設定を初期化。
@@ -56,7 +57,7 @@
 		else
 			$shareInfo = 'still'; //セッションを利用しているが、当該記事はまだシェアしていない。(シェア)
 	}
-
+*/
 
 	//▼認証関連
 	$auth = "false";
@@ -73,11 +74,11 @@
 		'name' => $name,
 		'auth' => $auth,
 		//'key' => $key,
-		'nowTime' => date ("m/d H:i",strtotime ("+9 hour")),
-		'nowTimeStamp' => strtotime ("now"),
-		'nextShareTime' => date ("m/d H:i",$_SESSION['nextShareTime']),
-		'nextShareTimeStamp' => $_SESSION['nextShareTime'],
-		'sharePost' => $_SESSION['sharePost'],
+		//'nowTime' => date ("m/d H:i",strtotime ("+9 hour")),
+		//'nowTimeStamp' => strtotime ("now"),
+		//'nextShareTime' => date ("m/d H:i",$_SESSION['nextShareTime']),
+		//'nextShareTimeStamp' => $_SESSION['nextShareTime'],
+		//'sharePost' => $_SESSION['sharePost'],
 		'mail' => MAIL,
 		'prior' => PRIOR,
 		'callBackUrl' => CALLBACK_URL,
