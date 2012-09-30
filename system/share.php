@@ -16,15 +16,18 @@ require '../config.php';
   		try{
 	  		$postdata = str_replace("%title%", $body, POST_FORMAT); //%title%→サイトのタイトル
   		 	
-  		 	if(SAFEMODE != true)
+  		 	if(SAFEMODE != TRUE){
  	 		 	$facebook->api('/me/feed', 'POST', array('message' => $postdata , 'link' => $url));
-  		 	
+ 	 		 	echo "FaceBookにポストしました。内容: ".$postdata;
+  		 	}
+  		 	else{
+ 	 		 	echo "セーフモードになっているため、ポストしませんでした。";	  		 	
+  		 	}
   		 	//▼$facebook->api('/me/feed', 'POST', array('message' => "『".$body."』を読みました。" , 'link' => $url));
   		 	//if($_SESSION['postSlug']!='' && $_SESSION['postSlug']!='undefined')
   		 	//	array_push($_SESSION['sharePost'], $_SESSION['postSlug']);
   			//$_SESSION['nextShareTime'] = strtotime("+15 hour"); //次のシェアタイムを1時間後に設定]
   		 	//echo "share.php:FaceBookにポストしました。".strtotime("+3 hour");
-  		 	echo "share.php:FaceBookにポストしました。".$postdata;
 	 	}
   		 catch(Exception $e){
 	  		 echo "share.php:送信に失敗しました。".$e;	  		 	

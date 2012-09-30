@@ -5,8 +5,8 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
 
 
 
-var dir = "socialLanp/system";
-var cnt = "socialLanp/";
+var dir = "system";
+var cnt = "";
 var label,mail;
 
 
@@ -14,19 +14,23 @@ var label,mail;
 $(document).ready(function(){
 
 	try{
-		var socialLanpDoc = document.getElementById("js_socialLanp");
-		var dLR = String(socialLanpDoc.src).split("?")[1];
+		var passObject = document.getElementById("js_socialLanp");
+		var AbsolutePass = String(passObject.src).split("?")[1];
 	}catch(e){
 		//console.log(e);
 	}
 
-	if(dLR!=undefined){
-		cnt=dLR;
-		dir=dLR+"/system";
+	//絶対パス指定によるJavascript読み込みだった場合
+	if(AbsolutePass!=undefined){
+		cnt=AbsolutePass;
+		dir=AbsolutePass+"/system";
 		//console.log("c");
 	}
 
-	$(".socialLanp").after('<div class="loadIcon" style="display:none;"><img src="'+dir+'/loadIcon.gif" /></div><div class="addContent"></div>');
+	$(".socialLanp").after(
+		'<div class="loadIcon" style="display:none;"><a href="http://sociallanp.lastlanp.jp/" target="_blank"><img class="plugin" src="'+dir+'/images/plugin.png" /></a><img class="loading" src="'+dir+'/images/loading.gif" /></div><div class="addContent"></div>'
+		);
+
 	label = $(".socialLanp").attr('rel');
 	checkLoginState();
 
@@ -62,7 +66,7 @@ function checkLoginState(){
 			
 			if(getData['auth']!="false"){
 					$(".socialLanp").fadeIn();
-					$(".loadIcon").slideUp();					
+					$("img.loading").slideUp();					
 				$(".socialLanp").attr({href:loginUri});
 			} //認証できていない場合はメッセージを表示して中断
 			else{
@@ -127,7 +131,7 @@ function open(name){
 				type: "POST",
 				//async: false,
 				//data: "title="+document.title+"&url="+document.URL,
-				url: cnt+"/content/"+label+'.php',
+				url: cnt+"content/"+label+'.php',
 				success: function(data){
 					if(data!=""){ //何かしらのコンテンツが取得できた場合
 						$(".addContent").append(data);
@@ -135,7 +139,7 @@ function open(name){
 	
 						share();
 						//debug();
-						$("div.loadIcon").slideUp();
+						$("img.loading").slideUp();
 					}
 					else{ //何も取得できなかった場合
 					console.log("ERROR:"+data);

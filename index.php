@@ -6,12 +6,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>ソーシャルランプ: 設定テストページ</title>
 
-	<!-- 同じディレクトリ内で呼び出す場合
+	<!-- 同じディレクトリ内で呼び出す場合 -->
 	<script type="text/javascript" src="system.js"></script>
-	-->
 	
-	<!-- 異なったディレクトリから呼び出す場合 -->
+	<!-- 異なったディレクトリから呼び出す場合 
 	<script type="text/javascript" id="js_socialLanp" src="../system.js?http://hirayamaru.info/sociallanp"></script>
+	-->
 
 </head>
 
