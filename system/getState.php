@@ -79,6 +79,7 @@
 		'nextShareTimeStamp' => $_SESSION['nextShareTime'],
 		'sharePost' => $_SESSION['sharePost'],
 		'mail' => MAIL,
+		'prior' => PRIOR,
 		'callBackUrl' => CALLBACK_URL,
 	    'loginState'=> $loginState,
 	    'loginUri'=> $loginUrl,

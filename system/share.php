@@ -30,11 +30,13 @@ require '../config.php';
   		 	//echo "share.php:FaceBookにポストしました。".strtotime("+3 hour");
 	 	}
   		 catch(Exception $e){
-	  		 echo "share.php:送信に失敗しました。".$e;	  		 	
+	  		 //echo "share.php:送信に失敗しました。".$e;	  		 	
+	  		 echo "error";
   		 	}
 	 }
 	 else{
-	 	 echo "share.php:送信に失敗しました。";
+	 	 //echo "share.php:送信に失敗しました。";
+	 	 echo "error";
 	 }
 	 
 	 

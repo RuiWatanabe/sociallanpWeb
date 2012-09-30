@@ -31,19 +31,27 @@ else{
 
 //facebookにシェアする
   //$user = $facebook->getUser();
-  if($login != false){
+$return = "error";
+if($login != false){
             try{
-                  $return = "true";
-                  //$return =  $facebook->api('/me/feed', 'POST', array('message' => "SocialLanpをシェアしました。" , 'link' => "http://sociallanp.lastlanp.jp"));
-                  //echo $req;
+                 
+                  $postdata = str_replace("%title%", $body, POST_FORMAT); //%title%→サイトのタイトル
+  		 	
+		  		 	if(SAFEMODE != TRUE){
+		 	 		 	$facebook->api('/me/feed', 'POST', array('message' => $postdata , 'link' => $url));
+		 	 		 	$return = "true : FaceBookにポストしました。内容: ".$postdata;
+		  		 	}
+		  		 	else{
+		 	 		 	$return = "true : セーフモードになっているため、ポストしませんでした。";	  		 	
+		  		 	}
            }
              catch(Exception $e){
-                  $return = "error";                      
-                  }
+                 $return = $return." : ポストに失敗しました。";
+                }
   }
-      else{
-            $return= "error";
-      }
+  else{
+      $return = $return." : 正常にログインできていません。";
+  }
      
 
 //}

@@ -7,8 +7,9 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
 
 var dir = "system";
 var cnt = "";
-var label,mail;
-
+var label,mail,prior;
+var addData; //PRIORで事前に読み込み指定した場合の、追加コンテンツデータ
+var addDataFlag=false;
 
 
 $(document).ready(function(){
@@ -59,6 +60,7 @@ function checkLoginState(){
 			var logoutUri = getData['logoutUri'];
 			var loginState = getData['loginState'];
 			mail = getData['mail'];
+			prior = getData['prior'];
 			//console.log("ログイン状態:"+loginState);
 			console.log(getData);
 			//console.log("すでにシェアしている記事:"+getData['sharePost']);
@@ -68,6 +70,19 @@ function checkLoginState(){
 					$(".socialLanp").fadeIn();
 					$("img.loading").slideUp();					
 				$(".socialLanp").attr({href:loginUri});
+
+				//ボタンのクリックにバインドします。
+				if(prior)
+					$.ajax({
+						type: "POST",
+						url: cnt+"content/"+label+'.php',
+						success: function(data){
+							addData = data;
+							console.log("追加コンテンツの先読みが完了しました。");
+							addDataFlag = true;
+						}
+					});				
+
 			} //認証できていない場合はメッセージを表示して中断
 			else{
 				console.log("証明書が正常ではないか、見つかりませんでした。");
@@ -105,13 +120,33 @@ function debug(){
 	
 }
 
-function callback(name){
-	//console.log("cb:"+name);
-	if(name != "error")
-		open(name);
+function callback(message){
+	console.log(message);
+	if(message.indexOf("true") != -1){
+		$("div.loadIcon").slideDown();
+		open(message);
+	}
 }
 
 
+
+/*
+function socialButtonClick(){
+	//$("div.loadIcon").slideDown();
+	//$(".socialLanp").slideUp();
+	//console.log("ボタンをクリックしました。");
+
+	$.ajax({
+		type: "POST",
+		url: cnt+"content/"+label+'.php',
+		success: function(data){
+			addData = data;
+			//console.log(data);
+		}
+	});
+					
+}
+*/
 
 //記事を開く
 function open(name){
@@ -124,9 +159,13 @@ function open(name){
 	} //認証できていない場合はメッセージを表示して中断
 */
 	
-	$("div.loadIcon").slideDown();
-	$(".socialLanp").fadeOut();
+	$(".socialLanp").slideUp();
 
+
+	//share();
+	//console.log(addData);
+
+	if(!prior)
 			$.ajax({
 				type: "POST",
 				//async: false,
@@ -134,12 +173,12 @@ function open(name){
 				url: cnt+"content/"+label+'.php',
 				success: function(data){
 					if(data!=""){ //何かしらのコンテンツが取得できた場合
+						$("img.loading").slideUp();
 						$(".addContent").append(data);
 						$(".addContent").slideDown();
 	
-						share();
+						//share();
 						//debug();
-						$("img.loading").slideUp();
 					}
 					else{ //何も取得できなかった場合
 					console.log("ERROR:"+data);
@@ -158,7 +197,18 @@ function open(name){
 						$("div.loadIcon").slideUp();					
 				}
 			});
-		
+	else if(addDataFlag){ //先読み機能	
+		$(".addContent").append(addData);
+		$(".addContent").slideDown();
+		$("img.loading").slideUp();
+		console.log("先読みデータを表示しました。");
+	}
+	else{
+		prior = false;
+		open(name);
+		console.log("先読みデータが取得できなかったため、通常の方法で再取得します。");
+	}
+
 
 }
 

@@ -17,6 +17,10 @@
 
 
 <body>
-	<a class="socialLanp" rel="test" target="_blank">FaceBookでログインしてコンテンツを表示する。</a>
-	</body>
+
+	<a class="socialLanp" rel="test" target="_blank">
+		<img src="example/button_off.png" alt="button_off" width="" height="" />
+	</a>
+
+</body>
 </html>
