@@ -61,9 +61,8 @@ function checkLoginState(){
 			var loginState = getData['loginState'];
 			mail = getData['mail'];
 			prior = getData['prior'];
-			//console.log("ログイン状態:"+loginState);
-			console.log(getData);
-			//console.log("すでにシェアしている記事:"+getData['sharePost']);
+
+			//console.log(getData);
 
 			
 			if(getData['auth']!="false"){
