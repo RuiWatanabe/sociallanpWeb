@@ -60,15 +60,19 @@
 */
 
 	//▼認証関連
-	$auth = "false";
-	$key = file_get_contents("KEY");
-	if($key == md5(MAIL)){
-		$auth = "true";
-	}else{
+	try{
 		$auth = "false";
+		$key = file_get_contents("KEY");
+		if($key == md5(MAIL)){
+			$auth = "true";
+		}else{
+			$auth = "false";
+		}
 	}
-
-
+	catch(Exception $e){
+		echo "KEYファイルが生成できませんでした。systemディレクトリの書き込みを許可してください。:"+$e;
+	}
+	
 
 	$info = array(
 		'name' => $name,
