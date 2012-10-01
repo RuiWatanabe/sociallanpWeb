@@ -62,19 +62,25 @@
 
 	//▼認証関連
 		$auth = "false";
-	try{
-		$key = file_get_contents("KEY");
-		if($key == md5(MAIL)){
-			$auth = "true";
-		}else{
-			$auth = "false";
+
+		if(file_exists("KEY")){
+			try{
+				$key = file_get_contents("KEY");
+				if($key == md5(MAIL)){
+					$auth = "true";
+				}else{
+					$auth = "false";
+				}
+			}
+			catch(Exception $e){
+				$error =  "KEYファイルから情報が読み取れませんでした。";
+				//break;
+			}
 		}
-	}
-	catch(Exception $e){
-		$error =  "KEYファイルが生成できませんでした。systemディレクトリの書き込みを許可してください。".$e;
-		//break;
-	}
-	
+		else{
+				$error =  "KEYファイルが生成されていませんでした。";		
+		}
+
 
 	$info = array(
 		'name' => $name,
