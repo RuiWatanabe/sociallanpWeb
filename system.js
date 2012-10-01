@@ -47,8 +47,10 @@ $(document).ready(function(){
 	try{
 		var passObject = document.getElementById("js_socialLanp");
 		var AbsolutePass = String(passObject.src).split("?")[1];
+		//AbsolutePass = AbsolutePass.replace("system.js", "");
+		AbsolutePass.replace("system.js", "");
 	}catch(e){
-		//console.log(e);
+		//console.log("絶対パス指定の仕方に問題があります。");
 	}
 
 	//絶対パス指定によるJavascript読み込みだった場合
@@ -111,6 +113,8 @@ function checkLoginState(){
 							addDataFlag = true;
 						}
 					});				
+
+					//console.log("ソーシャルランプは正常に読み込まれました。");
 
 			} //認証できていない場合はメッセージを表示して中断
 			else{
