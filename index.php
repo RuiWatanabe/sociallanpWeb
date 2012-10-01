@@ -7,12 +7,12 @@
 	<title>ソーシャルランプ: 設定テストページ</title>
 
 	<!-- 同じディレクトリ内で呼び出す場合 -->
-	<script type="text/javascript" src="../system.js"></script>
+	<script type="text/javascript" src="system.js"></script>
 	
-	<!-- 異なったディレクトリから呼び出す場合 -->
-	<!--
-	<script type="text/javascript" id="js_socialLanp" src="../system.js?http://hirayamaru.info/sociallanp/system.js"></script>
+	<!-- 異なったディレクトリから呼び出す場合 
+	<script type="text/javascript" id="js_socialLanp" src="../system.js?http://hirayamaru.info/sociallanp"></script>
 	-->
+
 
 <style type="text/css">
 
@@ -32,7 +32,7 @@
 		display: block;
 		width:302px;
 		height:64px;
-		background-image: url("../system/images/button_off.png");
+		background-image: url("system/images/button_off.png");
 		
 		color: #fff;
 		font-size: 20px;
@@ -46,7 +46,7 @@
 	}
 	
 	.socialLanp:hover{
-		background-image: url("../system/images/button_on.png");		
+		background-image: url("system/images/button_on.png");		
 	}
 	
 	.addContent{
