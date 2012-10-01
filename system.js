@@ -133,6 +133,9 @@ function checkLoginState(){
 */
 
 			}
+			error: function(e){
+				console.log("パスの設定に問題がある可能性があります。");
+			}
 	});	
 	
 }
