@@ -67,7 +67,12 @@
 		if(file_exists("KEY")){
 			try{
 				$key = file_get_contents("KEY"); //認証書の読み込み
-				if($key == md5(MAIL))$auth = "true"; //認証書が見つかり、データが正しい。
+				if($key == md5(MAIL)){
+					$auth = "true"; //認証書が見つかり、データが正しい。
+				}
+				else{
+					$error = "証明書の値が正しくありませんでした。$error";
+				}
 			}
 			catch(Exception $e){
 				//$error =  "KEYファイルから情報が読み取れませんでした。";
