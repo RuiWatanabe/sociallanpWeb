@@ -76,13 +76,13 @@
 			}
 			catch(Exception $e){
 				//$error =  "KEYファイルから情報が読み取れませんでした。";
-				$error = "KEYファイルから情報が読み取れませんでした。$error";
+				$error = "証明書から情報が読み取れませんでした。$error";
 				//break;
 			}
 		}
 		else{
 				//$error =  "KEYファイルが生成されていませんでした。";		
-				$error = "KEYファイルが生成されていませんでした。$error";
+				$error = "証明書ファイルが生成されていませんでした。$error";
 		}
 
 
