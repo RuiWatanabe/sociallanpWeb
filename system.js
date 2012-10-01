@@ -136,6 +136,7 @@ function checkLoginState(){
 
 			},
 			error: function(e){
+				console.log("エラーが発生しました。systemディレクトリの書き込み権限を正しく設定してください。");
 				console.log(e);
 			}
 	});	
