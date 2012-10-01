@@ -9,7 +9,7 @@
 	    'secret' => APP_SECRET
 	));
 
-	$error = "none";
+	$error = "";
 
 	$loginState = $facebook->getUser(); //ログインしているかどうかをチェック。している場合ユーザIDを返す。
 
@@ -33,6 +33,7 @@
 		//$facebook->destroySession();
 		//session_destroy();
 		//header("Location: $logoutUrl");
+		$error = "ログインできていません,$error";
 	}
 
 
@@ -65,20 +66,18 @@
 
 		if(file_exists("KEY")){
 			try{
-				$key = file_get_contents("KEY");
-				if($key == md5(MAIL)){
-					$auth = "true";
-				}else{
-					$auth = "false";
-				}
+				$key = file_get_contents("KEY"); //認証書の読み込み
+				if($key == md5(MAIL))$auth = "true"; //認証書が見つかり、データが正しい。
 			}
 			catch(Exception $e){
-				$error =  "KEYファイルから情報が読み取れませんでした。";
+				//$error =  "KEYファイルから情報が読み取れませんでした。";
+				$error = "KEYファイルから情報が読み取れませんでした。,$error";
 				//break;
 			}
 		}
 		else{
-				$error =  "KEYファイルが生成されていませんでした。";		
+				//$error =  "KEYファイルが生成されていませんでした。";		
+				$error = "KEYファイルが生成されていませんでした。,$error";
 		}
 
 
