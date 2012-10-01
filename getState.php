@@ -71,7 +71,7 @@
 		}
 	}
 	catch(Exception $e){
-		$error =  "KEYファイルが生成できませんでした。systemディレクトリの書き込みを許可してください。";
+		$error =  "KEYファイルが生成できませんでした。systemディレクトリの書き込みを許可してください。".$e;
 		//break;
 	}
 	
