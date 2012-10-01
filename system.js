@@ -96,7 +96,7 @@ function checkLoginState(){
 			mail = getData['mail'];
 			prior = getData['prior'];
 
-			//console.log(getData);
+			console.log(getData);
 
 			
 			if(getData['auth']!="false"){
@@ -136,8 +136,9 @@ function checkLoginState(){
 
 			},
 			error: function(e){
-				console.log("エラーが発生しました。systemディレクトリの書き込み権限を正しく設定してください。");
+				console.log("エラーが発生しました。プラグインの書き込み権限が正しくないか、認証書が見つかりませんでした。");
 				console.log(e['responseText']);
+				auth();
 			}
 	});	
 	
