@@ -314,6 +314,7 @@ function checkShare(){
 //config.phpのメールアドレスの値が正しいかどうかを判定する
 function auth(){
 	var checkBool = false;
+	console.log("ユーザー情報の認証を行います。");
 	$.ajax({
 		type: "POST",
 		async: false,
@@ -322,11 +323,12 @@ function auth(){
 		success: function(_code){
 			//checkBool = getdata;
 			
-			
 				
-			if(_code == "false")
-				console.log("ユーザー情報が認証できませんでした。登録処理・設定が正常に行われていないか、サーバーがメンテナンス中の可能性があります。");
-			else if(_code != ""){
+			if(_code.indexOf("false") != -1 || _code == "" || _code == undefined){
+				//console.log("ユーザー情報が認証できませんでした。登録処理・設定が正常に行われていないか、サーバーがメンテナンス中の可能性があります。");
+				console.log(_code);
+			}
+			else{
 				//認証できている場合、Keyファイルを作成する
 					$.ajax({
 						type: "POST",
@@ -334,12 +336,12 @@ function auth(){
 						data: "code="+_code,
 						success :function(){
 							console.log("ユーザー情報が認証されたため、証明書を再発行しました。");
-							checkLoginState();
+							//checkLoginState();
 						}
 					});
 			}
 			
-			},
+		},
 		error: function(getdata){
 			checkBool = getdata;
 			console.log(getdata);

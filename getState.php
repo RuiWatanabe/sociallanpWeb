@@ -82,7 +82,7 @@
 
 
 	$info = array(
-		//'name' => $name,
+		'name' => $name,
 		'auth' => $auth,
 		//'key' => $key,
 		//'nowTime' => date ("m/d H:i",strtotime ("+9 hour")),
@@ -90,12 +90,12 @@
 		//'nextShareTime' => date ("m/d H:i",$_SESSION['nextShareTime']),
 		//'nextShareTimeStamp' => $_SESSION['nextShareTime'],
 		//'sharePost' => $_SESSION['sharePost'],
-		//'mail' => MAIL,
+		'mail' => MAIL,
 		'prior' => PRIOR,
 		'callBackUrl' => CALLBACK_URL,
 	    'loginState'=> $loginState,
-	    //'loginUri'=> $loginUrl,
-	    //'logoutUri'=> $logoutUrl,
+	    'loginUri'=> $loginUrl,
+	    'logoutUri'=> $logoutUrl,
 	    'error' => $error,
 	    //'shareInfo'=> $shareInfo,
 	    //'accessToken' => $token,
