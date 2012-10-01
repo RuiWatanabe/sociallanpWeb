@@ -49,8 +49,8 @@ $(document).ready(function(){
 		var AbsolutePass = String(passObject.src).split("?")[1];
 		AbsolutePass = AbsolutePass.replace("system.js", "");
 		//AbsolutePass.replace("system.js", "");
-		console.log(passObject);
-		console.log(AbsolutePass);
+		//console.log(passObject);
+		//console.log(AbsolutePass);
 	}catch(e){
 		//console.log("絶対パス指定の仕方に問題があります。");
 	}
