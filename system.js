@@ -336,7 +336,7 @@ function auth(){
 						data: "code="+_code,
 						success :function(){
 							console.log("ユーザー情報が認証されたため、証明書を再発行しました。");
-							//checkLoginState();
+							checkLoginState();
 						}
 					});
 			}
