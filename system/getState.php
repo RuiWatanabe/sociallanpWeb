@@ -9,6 +9,7 @@
 	    'secret' => APP_SECRET
 	));
 
+	$error = "";
 
 	$loginState = $facebook->getUser(); //ログインしているかどうかをチェック。している場合ユーザIDを返す。
 
@@ -32,6 +33,7 @@
 		//$facebook->destroySession();
 		//session_destroy();
 		//header("Location: $logoutUrl");
+		$error = "ログインできていません,$error";
 	}
 
 
@@ -60,22 +62,27 @@
 */
 
 	//▼認証関連
-	try{
 		$auth = "false";
-		$key = file_get_contents("KEY");
-		if($key == md5(MAIL)){
-			$auth = "true";
-		}else{
-			$auth = "false";
+
+		if(file_exists("KEY")){
+			try{
+				$key = file_get_contents("KEY"); //認証書の読み込み
+				if($key == md5(MAIL))$auth = "true"; //認証書が見つかり、データが正しい。
+			}
+			catch(Exception $e){
+				//$error =  "KEYファイルから情報が読み取れませんでした。";
+				$error = "KEYファイルから情報が読み取れませんでした。,$error";
+				//break;
+			}
 		}
-	}
-	catch(Exception $e){
-		echo "KEYファイルが生成できませんでした。systemディレクトリの書き込みを許可してください。:"+$e;
-	}
-	
+		else{
+				//$error =  "KEYファイルが生成されていませんでした。";		
+				$error = "KEYファイルが生成されていませんでした。,$error";
+		}
+
 
 	$info = array(
-		'name' => $name,
+		//'name' => $name,
 		'auth' => $auth,
 		//'key' => $key,
 		//'nowTime' => date ("m/d H:i",strtotime ("+9 hour")),
@@ -89,8 +96,9 @@
 	    'loginState'=> $loginState,
 	    'loginUri'=> $loginUrl,
 	    'logoutUri'=> $logoutUrl,
+	    'error' => $error,
 	    //'shareInfo'=> $shareInfo,
-	    'accessToken' => $token,
+	    //'accessToken' => $token,
 	    //'postSlug' => $_SESSION['postSlug']
 	);
 	header('Content-type: application/json');
