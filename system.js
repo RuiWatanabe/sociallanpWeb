@@ -47,8 +47,10 @@ $(document).ready(function(){
 	try{
 		var passObject = document.getElementById("js_socialLanp");
 		var AbsolutePass = String(passObject.src).split("?")[1];
-		//AbsolutePass = AbsolutePass.replace("system.js", "");
-		AbsolutePass.replace("system.js", "");
+		AbsolutePass = AbsolutePass.replace("system.js", "");
+		//AbsolutePass.replace("system.js", "");
+		console.log(passObject);
+		console.log(AbsolutePass);
 	}catch(e){
 		//console.log("絶対パス指定の仕方に問題があります。");
 	}
@@ -132,7 +134,7 @@ function checkLoginState(){
 				}
 */
 
-			}
+			},
 			error: function(e){
 				console.log("パスの設定に問題がある可能性があります。");
 			}
