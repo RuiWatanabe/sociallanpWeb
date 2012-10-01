@@ -33,7 +33,7 @@
 		//$facebook->destroySession();
 		//session_destroy();
 		//header("Location: $logoutUrl");
-		$error = "ログインできていません,$error";
+		$error = "ログインできていません。$error";
 	}
 
 
@@ -71,13 +71,13 @@
 			}
 			catch(Exception $e){
 				//$error =  "KEYファイルから情報が読み取れませんでした。";
-				$error = "KEYファイルから情報が読み取れませんでした。,$error";
+				$error = "KEYファイルから情報が読み取れませんでした。$error";
 				//break;
 			}
 		}
 		else{
 				//$error =  "KEYファイルが生成されていませんでした。";		
-				$error = "KEYファイルが生成されていませんでした。,$error";
+				$error = "KEYファイルが生成されていませんでした。$error";
 		}
 
 

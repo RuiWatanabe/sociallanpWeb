@@ -96,7 +96,6 @@ function checkLoginState(){
 			mail = getData['mail'];
 			prior = getData['prior'];
 
-			console.log(getData);
 
 			
 			if(getData['auth']!="false"){
@@ -120,7 +119,8 @@ function checkLoginState(){
 
 			} //認証できていない場合はメッセージを表示して中断
 			else{
-				console.log("証明書が正常ではないか、見つかりませんでした。");
+				console.log(getData['error']);
+				//console.log("証明書が正常ではないか、見つかりませんでした。");
 				auth();
 			}			
 	
