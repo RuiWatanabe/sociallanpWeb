@@ -36,7 +36,7 @@ else if(window.attachEvent) {
 
 
 var dir = "system";
-var cnt = "";
+var contentPass = ""; //contentフォルダまでのパス
 var label,mail,prior;
 var addData; //PRIORで事前に読み込み指定した場合の、追加コンテンツデータ
 var addDataFlag=false;
@@ -55,7 +55,7 @@ $(document).ready(function(){
 
 	//絶対パス指定によるJavascript読み込みだった場合
 	if(AbsolutePass!=undefined){
-		cnt=AbsolutePass;
+		contentPass=AbsolutePass;
 		dir=AbsolutePass+"/system";
 		//console.log("c");
 	}
@@ -106,7 +106,7 @@ function checkLoginState(){
 				if(prior)
 					$.ajax({
 						type: "POST",
-						url: cnt+"content/"+label+'.php',
+						url: contentPass+"content/"+label+'.php',
 						success: function(data){
 							addData = data;
 							console.log("追加コンテンツの先読みが完了しました。");
@@ -171,7 +171,7 @@ function socialButtonClick(){
 
 	$.ajax({
 		type: "POST",
-		url: cnt+"content/"+label+'.php',
+		url: contentPass+"content/"+label+'.php',
 		success: function(data){
 			addData = data;
 			//console.log(data);
@@ -203,7 +203,7 @@ function open(name){
 				type: "POST",
 				//async: false,
 				//data: "title="+document.title+"&url="+document.URL,
-				url: cnt+"content/"+label+'.php',
+				url: contentPass+"content/"+label+'.php',
 				success: function(data){
 					if(data!=""){ //何かしらのコンテンツが取得できた場合
 						$("img.loading").slideUp();
