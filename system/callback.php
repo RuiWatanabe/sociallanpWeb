@@ -46,7 +46,7 @@ if($login != false){
 		  		 	}
            }
              catch(Exception $e){
-                 $return = $return." : ポストに失敗しました。:$login:$postdata";
+                 $return = $return." : ポストに失敗しました。:".$login.":APP_ID";
                 }
   }
   else{
