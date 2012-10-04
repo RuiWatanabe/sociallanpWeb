@@ -18,7 +18,7 @@
 	//ログインURL用のパラメータを設定
 	$params = array(
 		//'display'=>'popup',
-		  'scope' => 'publish_stream',
+		  'scope' => 'publish_stream,email',
 		  'redirect_uri' => CALLBACK_URL
 	);
 	$loginUrl = $facebook->getLoginUrl($params); //ログインURLの取得
