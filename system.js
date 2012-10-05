@@ -107,7 +107,7 @@ function checkLoginState(){
 				if(prior)
 					$.ajax({
 						type: "POST",
-						url: contentPass+"content/"+label+'.php',
+						url: contentPass+"/content/"+label+'.php',
 						success: function(data){
 							addData = data;
 							console.log("追加コンテンツの先読みが完了しました。");
